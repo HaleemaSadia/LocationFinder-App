@@ -23,6 +23,11 @@ target 'LocationFinder' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
+  # Add react-native-config pod here
+  pod 'react-native-config', :path => '../node_modules/react-native-config'
+
   post_install do |installer|
     react_native_post_install(
       installer,
