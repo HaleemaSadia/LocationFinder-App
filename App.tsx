@@ -5,18 +5,20 @@
  * @format
  */
 
-import { Text, StyleSheet, useColorScheme } from 'react-native';
-import {
-  SafeAreaProvider,
-} from 'react-native-safe-area-context';
+import { StyleSheet, useColorScheme } from 'react-native';
+import RootNavigator from './src/navigation/RootNavigator';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './src/store';
 
 function App() {
-  const isDarkMode = useColorScheme() === 'dark';
 
   return (
-    <SafeAreaProvider>
-      <Text>Location Finder</Text>
-    </SafeAreaProvider>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <RootNavigator />
+      </PersistGate>
+    </Provider>
   );
 }
 
